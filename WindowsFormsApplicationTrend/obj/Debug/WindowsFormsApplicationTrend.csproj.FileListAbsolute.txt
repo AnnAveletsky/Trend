@@ -1,0 +1,20 @@
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.exe.config
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.exe
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.pdb
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.csprojResolveAssemblyReference.cache
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Properties.Resources.resources
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.csproj.GenerateResource.Cache
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.exe
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.pdb
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Charts.resources
+c:\users\dns\documents\visual studio 2013\Projects\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Main.resources
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.exe.config
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.exe
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.pdb
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.exe
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\bin\Debug\WindowsFormsApplicationTrend.pdb
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.csprojResolveAssemblyReference.cache
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Charts.resources
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Main.resources
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Properties.Resources.resources
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.csproj.GenerateResource.Cache

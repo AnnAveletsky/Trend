@@ -1,0 +1,7 @@
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\obj\Debug\UnitTestProjectTrend.csprojResolveAssemblyReference.cache
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\bin\Debug\UnitTestProjectTrend.dll
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\bin\Debug\UnitTestProjectTrend.pdb
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\bin\Debug\ClassLibraryTrend.dll
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\bin\Debug\ClassLibraryTrend.pdb
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\obj\Debug\UnitTestProjectTrend.dll
+c:\users\dns\documents\visual studio 2013\Projects\Trend\UnitTestProjectTrend\obj\Debug\UnitTestProjectTrend.pdb

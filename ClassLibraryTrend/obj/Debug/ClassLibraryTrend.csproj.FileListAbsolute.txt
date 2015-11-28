@@ -1,0 +1,5 @@
+c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.csprojResolveAssemblyReference.cache
+c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\bin\Debug\ClassLibraryTrend.dll
+c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\bin\Debug\ClassLibraryTrend.pdb
+c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.dll
+c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.pdb

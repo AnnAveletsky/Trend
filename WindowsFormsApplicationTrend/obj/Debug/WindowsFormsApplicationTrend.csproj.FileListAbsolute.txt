@@ -18,3 +18,5 @@ C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\Windo
 C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Main.resources
 C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.Properties.Resources.resources
 C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\obj\Debug\WindowsFormsApplicationTrend.csproj.GenerateResource.Cache
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\bin\Debug\ClassLibraryTrend.dll
+C:\Users\DNS\Documents\GitHub\Trend\WindowsFormsApplicationTrend\bin\Debug\ClassLibraryTrend.pdb

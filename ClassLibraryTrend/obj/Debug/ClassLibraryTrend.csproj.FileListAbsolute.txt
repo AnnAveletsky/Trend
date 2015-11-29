@@ -3,3 +3,8 @@ c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\bin\D
 c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\bin\Debug\ClassLibraryTrend.pdb
 c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.dll
 c:\users\dns\documents\visual studio 2013\Projects\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.pdb
+C:\Users\DNS\Documents\GitHub\Trend\ClassLibraryTrend\bin\Debug\ClassLibraryTrend.dll
+C:\Users\DNS\Documents\GitHub\Trend\ClassLibraryTrend\bin\Debug\ClassLibraryTrend.pdb
+C:\Users\DNS\Documents\GitHub\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.csprojResolveAssemblyReference.cache
+C:\Users\DNS\Documents\GitHub\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.dll
+C:\Users\DNS\Documents\GitHub\Trend\ClassLibraryTrend\obj\Debug\ClassLibraryTrend.pdb

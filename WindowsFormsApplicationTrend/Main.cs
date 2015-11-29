@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,10 +16,6 @@ namespace WindowsFormsApplicationTrend
         public Main()
         {
             InitializeComponent();
-            dataGridView1.Rows.Add(new DateTime(1994, 1, 30).ToShortDateString(), 11);
-            dataGridView1.Rows.Add(new DateTime(1994, 2, 28).ToShortDateString(), 13);
-            dataGridView1.Rows.Add(new DateTime(1994, 3, 30).ToShortDateString(), 12);
-            dataGridView1.Rows.Add(new DateTime(1994, 4, 30).ToShortDateString(), 16);
         }
 
         private void BtnGrid_Click(object sender, EventArgs e)
@@ -48,11 +45,20 @@ namespace WindowsFormsApplicationTrend
                     MessageBox.Show("В " + (i + 1) + "й строке обшибка. Запись с таким ключём уже существует");
                 }
             }
+            
             if (list.Count != 0&&list.Count!=1)
             {
-                Charts charts = new Charts(list);
-                charts.Activate();
-                charts.Show();
+                double Alpha = 0;
+                if (double.TryParse(textBox1.Text.ToString(), out Alpha)&&Alpha<=1)
+                {
+                    Charts charts = new Charts(list, Alpha);
+                    charts.Activate();
+                    charts.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Чтото не так с коэфициентом сглаживания");
+                }
             }
             else
             {
@@ -62,7 +68,31 @@ namespace WindowsFormsApplicationTrend
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader myStream = new StreamReader(openFileDialog1.FileName);
+                int i=0;
+                while(myStream.EndOfStream==false){
+                    try{
+                    string[] line=myStream.ReadLine().Split('\t');
+                        DateTime dateTime;
+                        double value;
+                        if (DateTime.TryParse(line[0], out dateTime) == true && double.TryParse(line[1], out value)==true)
+                        {
+                            dataGridView1.Rows.Add(dateTime.ToShortDateString(), value);
+                        }
+                    }catch{
+                        if(i!=0){
+                            MessageBox.Show("Ошибка чтения файла");
+                        }
+                    }
+                    i++;
+                }
+                 
+            }
         }
 
 

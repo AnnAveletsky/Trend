@@ -14,6 +14,11 @@ namespace UnitTestProjectTrend
             Trend.Line(new List<double>() { 1, 2, 5, 6 });
         }
         [TestMethod]
+        public void ExpTrend()
+        {
+            Trend.Exp(new List<double>() { 1, 2, 5, 6 },0.5);
+        }
+        [TestMethod]
         public void LogTrend()
         {
             Trend.Log(new List<double>() { 1, 2, 5, 6 });

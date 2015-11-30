@@ -35,9 +35,18 @@ namespace WindowsFormsApplicationTrend
                 chart1.Series[3].Points.AddXY(i.Key, LogTrendValue[list.Keys.IndexOf(i.Key)]);
                 chart1.Series[4].Points.AddXY(i.Key, PowTrendValue[list.Keys.IndexOf(i.Key)]);
             }
-            chart1.Legends[1].CustomItems[0].Cells[1].Text = Trend.A(list.Values.ToList()).ToString();
-            chart1.Legends[1].CustomItems[1].Cells[1].Text =Math.Round( Trend.B(list.Values.ToList()),6).ToString();
-            chart1.Legends[1].CustomItems[2].Cells[1].Text = Alpha.ToString();
+            double Min = Math.Min(Math.Min(Math.Min(list.Values.Min(), LineTrendValue.Min()), Math.Min(ExpTrendValue.Min(), LogTrendValue.Min())), PowTrendValue.Min());
+            double Max = Math.Max(Math.Max(Math.Max(list.Values.Max(), LineTrendValue.Max()), Math.Max(ExpTrendValue.Max(), LogTrendValue.Max())), PowTrendValue.Max());
+            chart1.ChartAreas[0].AxisY.Minimum = Min - (Max - Min) / 10;
+            chart1.ChartAreas[0].AxisY.Maximum = Max + (Max - Min) / 5;
+
+            chart1.Legends[1].CustomItems[0].Cells[1].Text = Alpha.ToString();
+            chart1.Legends[1].CustomItems[1].Cells[1].Text = Trend.A(list.Values.ToList()).ToString();
+            chart1.Legends[1].CustomItems[2].Cells[1].Text = Trend.B(list.Values.ToList()).ToString();
+            chart1.Legends[2].CustomItems[0].Cells[1].Text = Trend.R2(list.Values.ToList(),LineTrendValue).ToString();
+            chart1.Legends[2].CustomItems[1].Cells[1].Text = Trend.R2(list.Values.ToList(), ExpTrendValue).ToString();
+            chart1.Legends[2].CustomItems[2].Cells[1].Text = Trend.R2(list.Values.ToList(), LogTrendValue).ToString();
+            chart1.Legends[2].CustomItems[3].Cells[1].Text = Trend.R2(list.Values.ToList(), PowTrendValue).ToString();
         }
 
         private void LineTrend_CheckedChanged(object sender, EventArgs e)

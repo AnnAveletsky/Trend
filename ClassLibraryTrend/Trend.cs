@@ -54,6 +54,16 @@ namespace ClassLibraryTrend
             }
             return SumX2;
         }
+        public static double R2(List<double> Y, List<double> TrendY)
+        {
+            double R2 = 0;
+            double ymean = Ymean(Y);
+            for (int i = 0; i < Y.Count; i++)
+            {
+                R2 += Math.Pow((Y[i] - TrendY[i]), 2) / Math.Pow((Y[i] - ymean), 2);
+            }
+            return 1 - R2;
+        }
         public static List<double> Line(List<double> Y)
         {
             List<double> TrendY = new List<double>();
@@ -65,7 +75,6 @@ namespace ClassLibraryTrend
             }
             return TrendY;
         }
-
         public static List<double> Exp(List<double> Y, double Alpha)
         {
             List<double> TrendY = new List<double>();

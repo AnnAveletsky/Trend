@@ -48,17 +48,9 @@ namespace WindowsFormsApplicationTrend
             
             if (list.Count != 0&&list.Count!=1)
             {
-                double Alpha = 0;
-                if (double.TryParse(textBox1.Text.ToString(), out Alpha)&&Alpha<=1)
-                {
-                    Charts charts = new Charts(list, Alpha);
+                    Charts charts = new Charts(list);
                     charts.Activate();
                     charts.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Чтото не так с коэфициентом сглаживания");
-                }
             }
             else
             {
@@ -84,6 +76,12 @@ namespace WindowsFormsApplicationTrend
                         {
                             dataGridView1.Rows.Add(dateTime.ToShortDateString(), value);
                         }
+                        else
+                        {
+                            MessageBox.Show("Ошибка в строке"+(i+1));
+                            myStream.Close();
+                            return;
+                        }
                     }catch{
                         if(i!=0){
                             MessageBox.Show("Ошибка чтения файла");
@@ -91,6 +89,7 @@ namespace WindowsFormsApplicationTrend
                     }
                     i++;
                 }
+                myStream.Close();
                  
             }
         }

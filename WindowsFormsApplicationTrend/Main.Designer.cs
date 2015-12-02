@@ -35,18 +35,15 @@
             this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.BtnLoad = new System.Windows.Forms.Button();
+            this.BtnGrid = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.BtnGrid = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.BtnLoad = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -125,7 +122,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.BtnLoad, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.BtnGrid, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(687, 3);
@@ -136,6 +132,28 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(244, 472);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // BtnLoad
+            // 
+            this.BtnLoad.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnLoad.Location = new System.Drawing.Point(3, 3);
+            this.BtnLoad.Name = "BtnLoad";
+            this.BtnLoad.Size = new System.Drawing.Size(238, 67);
+            this.BtnLoad.TabIndex = 11;
+            this.BtnLoad.Text = "Загрузить данные";
+            this.BtnLoad.UseVisualStyleBackColor = true;
+            this.BtnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
+            // 
+            // BtnGrid
+            // 
+            this.BtnGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnGrid.Location = new System.Drawing.Point(3, 412);
+            this.BtnGrid.Name = "BtnGrid";
+            this.BtnGrid.Size = new System.Drawing.Size(238, 57);
+            this.BtnGrid.TabIndex = 9;
+            this.BtnGrid.Text = "Построить графики";
+            this.BtnGrid.UseVisualStyleBackColor = true;
+            this.BtnGrid.Click += new System.EventHandler(this.BtnGrid_Click);
             // 
             // label1
             // 
@@ -151,48 +169,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // BtnGrid
-            // 
-            this.BtnGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnGrid.Location = new System.Drawing.Point(3, 412);
-            this.BtnGrid.Name = "BtnGrid";
-            this.BtnGrid.Size = new System.Drawing.Size(238, 57);
-            this.BtnGrid.TabIndex = 9;
-            this.BtnGrid.Text = "Построить графики";
-            this.BtnGrid.UseVisualStyleBackColor = true;
-            this.BtnGrid.Click += new System.EventHandler(this.BtnGrid_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 207);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 199);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Коэфициент сглаживания";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 26);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "0,1";
-            // 
-            // BtnLoad
-            // 
-            this.BtnLoad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnLoad.Location = new System.Drawing.Point(3, 3);
-            this.BtnLoad.Name = "BtnLoad";
-            this.BtnLoad.Size = new System.Drawing.Size(238, 67);
-            this.BtnLoad.TabIndex = 11;
-            this.BtnLoad.Text = "Загрузить данные";
-            this.BtnLoad.UseVisualStyleBackColor = true;
-            this.BtnLoad.Click += new System.EventHandler(this.BtnLoad_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -207,8 +183,6 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,8 +200,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
         private System.Windows.Forms.Button BtnGrid;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button BtnLoad;
 
     }

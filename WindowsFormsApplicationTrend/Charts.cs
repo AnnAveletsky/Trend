@@ -19,14 +19,16 @@ namespace WindowsFormsApplicationTrend
         List<double> ExpTrendValue;
         List<double> LogTrendValue;
         List<double> PowTrendValue;
-        public Charts(SortedList<DateTime, double> list, double Alpha)
+        public Charts(SortedList<DateTime, double> list)
         {
             InitializeComponent();
             List = list;
-            LineTrendValue = Trend.Line(list.Values.ToList());
-            ExpTrendValue = Trend.Exp(list.Values.ToList(), Alpha);
-            LogTrendValue = Trend.Log(list.Values.ToList());
-            PowTrendValue = Trend.Pow(list.Values.ToList());
+            List<double> X = list.Keys.Select(p => (double)list.Keys.IndexOf(p) + 1).ToList();
+            List<double> Y = list.Values.ToList();
+            LineTrendValue = Trend.Line(Y, X);
+            ExpTrendValue = Trend.Exp(Y, X);
+            LogTrendValue = Trend.Log(Y, X);
+            PowTrendValue = Trend.Pow(Y, X);
             foreach (var i in list)
             {
                 chart1.Series[0].Points.AddXY(i.Key, i.Value);
@@ -40,13 +42,28 @@ namespace WindowsFormsApplicationTrend
             chart1.ChartAreas[0].AxisY.Minimum = Min - (Max - Min) / 10;
             chart1.ChartAreas[0].AxisY.Maximum = Max + (Max - Min) / 5;
 
-            chart1.Legends[1].CustomItems[0].Cells[1].Text = Alpha.ToString();
-            chart1.Legends[1].CustomItems[1].Cells[1].Text = Trend.A(list.Values.ToList()).ToString();
-            chart1.Legends[1].CustomItems[2].Cells[1].Text = Trend.B(list.Values.ToList()).ToString();
-            chart1.Legends[2].CustomItems[0].Cells[1].Text = Trend.R2(list.Values.ToList(),LineTrendValue).ToString();
-            chart1.Legends[2].CustomItems[1].Cells[1].Text = Trend.R2(list.Values.ToList(), ExpTrendValue).ToString();
-            chart1.Legends[2].CustomItems[2].Cells[1].Text = Trend.R2(list.Values.ToList(), LogTrendValue).ToString();
-            chart1.Legends[2].CustomItems[3].Cells[1].Text = Trend.R2(list.Values.ToList(), PowTrendValue).ToString();
+            chart1.Legends[1].CustomItems[0].Cells[1].Text = Trend.R2(Y, LineTrendValue).ToString();
+            double b = Trend.B(Y, X);
+            double a = Trend.A(Y, X, b);
+            chart1.Legends[1].CustomItems[0].Cells[2].Text = "a+x*b=" + a + "+x*" + b;
+
+
+            chart1.Legends[1].CustomItems[1].Cells[1].Text = Trend.R2(Y, ExpTrendValue).ToString();
+            List<double> Y1 = Y.Select(y => Math.Log(y)).ToList();
+            b = Trend.B(Y1, X);
+            a = Trend.A(Y1, X, b);
+            chart1.Legends[1].CustomItems[1].Cells[2].Text = "a*e^(x*b)=" + a + "*e^(x*" + b + ")";
+
+            chart1.Legends[1].CustomItems[2].Cells[1].Text = Trend.R2(Y, LogTrendValue).ToString();
+            List<double> X1 = X.Select(x => Math.Log(x)).ToList();
+            b = Trend.B(Y, X1);
+            a = Trend.A(Y, X1, b);
+            chart1.Legends[1].CustomItems[2].Cells[2].Text = "a+ln(x*b)=" + a + "+ln(x*" + b + ")";
+
+            chart1.Legends[1].CustomItems[3].Cells[1].Text = Trend.R2(Y, PowTrendValue).ToString();
+            b = Trend.B(Y1, X1);
+            a = Trend.A(Y1, X1, b);
+            chart1.Legends[1].CustomItems[3].Cells[2].Text = "a*x^b=" + a + "*x^" + b;
         }
 
         private void LineTrend_CheckedChanged(object sender, EventArgs e)
@@ -55,16 +72,12 @@ namespace WindowsFormsApplicationTrend
             {
                 chart1.Series[1].Enabled = true;
                 chart1.Legends[1].CustomItems[0].Enabled = true;
-                chart1.Legends[1].CustomItems[1].Enabled = true;
             }
             else
             {
                 chart1.Series[1].Enabled = false;
-                if (LogTrend.Checked == false && PowTrend.Checked == false)
-                {
-                    chart1.Legends[1].CustomItems[0].Enabled = false;
-                    chart1.Legends[1].CustomItems[1].Enabled = false;
-                }
+                chart1.Legends[1].CustomItems[0].Enabled = false;
+                
             }
         }
 
@@ -73,12 +86,12 @@ namespace WindowsFormsApplicationTrend
             if (ExpSmoothing.Checked == true)
             {
                 chart1.Series[2].Enabled = true;
-                chart1.Legends[1].CustomItems[2].Enabled = true;
+                chart1.Legends[1].CustomItems[1].Enabled = true;
             }
             else
             {
                 chart1.Series[2].Enabled = false;
-                chart1.Legends[1].CustomItems[2].Enabled = false;
+                chart1.Legends[1].CustomItems[1].Enabled = false;
             }
         }
 
@@ -87,17 +100,12 @@ namespace WindowsFormsApplicationTrend
             if (LogTrend.Checked == true)
             {
                 chart1.Series[3].Enabled = true;
-                chart1.Legends[1].CustomItems[0].Enabled = true;
-                chart1.Legends[1].CustomItems[1].Enabled = true;
+                chart1.Legends[1].CustomItems[2].Enabled = true;
             }
             else
             {
                 chart1.Series[3].Enabled = false;
-                if (LineTrend.Checked == false && PowTrend.Checked == false)
-                {
-                    chart1.Legends[1].CustomItems[0].Enabled = false;
-                    chart1.Legends[1].CustomItems[1].Enabled = false;
-                }
+                chart1.Legends[1].CustomItems[2].Enabled = false;
             }
         }
 
@@ -106,17 +114,12 @@ namespace WindowsFormsApplicationTrend
             if (PowTrend.Checked == true)
             {
                 chart1.Series[4].Enabled = true;
-                chart1.Legends[1].CustomItems[0].Enabled = true;
-                chart1.Legends[1].CustomItems[1].Enabled = true;
+                chart1.Legends[1].CustomItems[3].Enabled = true;
             }
             else
             {
                 chart1.Series[4].Enabled = false;
-                if (LogTrend.Checked == false && LineTrend.Checked == false)
-                {
-                    chart1.Legends[1].CustomItems[0].Enabled = false;
-                    chart1.Legends[1].CustomItems[1].Enabled = false;
-                }
+                    chart1.Legends[1].CustomItems[3].Enabled = false;
             }
         }
 

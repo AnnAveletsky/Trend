@@ -7,106 +7,88 @@ namespace ClassLibraryTrend
 {
     public static class Trend
     {
-        public static double A(List<double> Y)
+        public static double SumT1T2(List<double> T1, List<double> T2)
         {
-            return A(Ymean(Y), Xmean(Y.Count), B(SumXY(Y), SumX2(Y.Count), Y.Count, Xmean(Y.Count), Ymean(Y)));
-        }
-        static double A(double Ymean, double Xmean, double b)
-        {
-            return Ymean - Xmean * b;
-        }
-        static double B(double SumXY, double SumX2, int Count, double Xmean, double Ymean)
-        {
-            return (SumXY - Count * Xmean * Ymean) / (SumX2 - Count * Xmean * Xmean);
-        }
-        public static double B(List<double> Y)
-        {
-            return B(SumXY(Y), SumX2(Y.Count), Y.Count, Xmean(Y.Count), Ymean(Y));
-        }
-        static double Xmean(int Count)
-        {
-            double Xmean = 0;
-            for (int Xi = 1; Xi <= Count; Xi++)
+            double result=0;
+            for (int i = 0; i < T1.Count; i++)
             {
-                Xmean += Xi;
+                result+=T1[i]*T2[i];
             }
-            return Xmean/Count;
+            return result;
         }
-        static double Ymean(List<double> Y)
+        public static double SumT1SumT2(List<double> T1, List<double> T2)
         {
-            return Y.Sum() / Y.Count;
+            return T1.Sum()*T2.Sum();
         }
-        static double SumXY(List<double> Y)
+        public static double DelMinus(double Sum1T1T2, double Sum1T1SumT2, double Sum2T1T2, double Sum2T1SumT2,int Count)
         {
-            double SumXY = 0;
-            for (int Xi = 1; Xi <= Y.Count; Xi++)
-            {
-                SumXY += Xi * Y[Xi - 1];
-            }
-            return SumXY;
+            return (Count * Sum1T1T2 - Sum1T1SumT2) / (Count * Sum2T1T2 - Sum2T1SumT2);
         }
-        static double SumX2(int Count)
+        public static double Minus(double Count,double Sum1,double Coefficient,double Sum2)
         {
-            double SumX2 = 0;
-            for (int Xi = 1; Xi <= Count; Xi++)
-            {
-                SumX2 += Xi * Xi;
-            }
-            return SumX2;
+            return 1 / Count * (Sum1 - Coefficient * Sum2);
         }
         public static double R2(List<double> Y, List<double> TrendY)
         {
-            double R2 = 0;
-            double ymean = Ymean(Y);
+            double chisl = 0;
+            double znam = 0;
             for (int i = 0; i < Y.Count; i++)
             {
-                R2 += Math.Pow((Y[i] - TrendY[i]), 2) / Math.Pow((Y[i] - ymean), 2);
+                chisl+=Math.Pow((Y[i] - TrendY[i]), 2);
+                znam+=Math.Pow((Y[i] - Y.Sum()/Y.Count), 2);
             }
-            return 1 - R2;
+            return 1 - chisl/znam;
         }
-        public static List<double> Line(List<double> Y)
+        public static double B(List<double> Y, List<double> X)
+        {
+            return DelMinus(SumT1T2(Y, X), SumT1SumT2(Y, X), SumT1T2(X, X), SumT1SumT2(X, X), Y.Count);
+        }
+        public static double A(List<double> Y, List<double> X,double b)
+        {
+            return Minus(Y.Count, Y.Sum(), b, X.Sum());
+        }
+        public static List<double> Line(List<double> Y,List<double> X)
         {
             List<double> TrendY = new List<double>();
-            double a = A(Y);
-            double b = B(Y);
+            double b = B(Y, X);
+            double a = A(Y,X,b);
             for (int Xi = 1; Xi <= Y.Count; Xi++)
             {
-                TrendY.Add( a+ Xi * b);
+                TrendY.Add(a + Xi * b);
             }
             return TrendY;
         }
-        public static List<double> Exp(List<double> Y, double Alpha)
+        public static List<double> Exp(List<double> Y, List<double> X)
         {
+           Y= Y.Select(y => Math.Log(y)).ToList();
             List<double> TrendY = new List<double>();
-            TrendY.Add(Y[0]);
-            TrendY.Add(Y[1]);
-            for (int i = 2; i < Y.Count; i++)
-            {
-                double sum = 0;
-                for (int j = 0; j < i-1; j++)
-                {
-                    sum += Math.Pow((1 - Alpha), j - 1)*Y[i-j];
-                }
-                TrendY.Add(Alpha * sum +Math.Pow((1 - Alpha), i - 2) * TrendY[i - 2]);
-            }
-            return TrendY;
-        }
-        public static List<double> Log(List<double> Y)
-        {
-            List<double> TrendY = new List<double>();
-            double a = A(Y);
-            double b = B(Y);
+            double b = B(Y, X);
+            double a =Math.Exp( A(Y, X, b));
             for (int Xi = 1; Xi <= Y.Count; Xi++)
             {
-                TrendY.Add(a + Math.Log(Xi) * b);
+                TrendY.Add(a * Math.Exp(Xi *b));
             }
             return TrendY;
         }
-        public static List<double> Pow(List<double> Y)
+        public static List<double> Log(List<double> Y, List<double> X)
         {
+            X = X.Select(x => Math.Log(x)).ToList();
             List<double> TrendY = new List<double>();
-            double a = A(Y);
-            double b = B(Y);
+            double b = B(Y, X);
+            double a = A(Y, X, b);
+            for (int Xi = 1; Xi <= Y.Count; Xi++)
+            {
+                TrendY.Add(b * Math.Log(Xi) + a);
+            }
+            return TrendY;
+        }
+        public static List<double> Pow(List<double> Y, List<double> X)
+        {
+            Y = Y.Select(y => Math.Log(y)).ToList();
+            X = X.Select(x => Math.Log(x)).ToList();
+            List<double> TrendY = new List<double>();
+            double b = B(Y, X);
+            double a =Math.Exp( A(Y, X, b));
             for (int Xi = 1; Xi <= Y.Count; Xi++)
             {
                 TrendY.Add(a* Math.Pow(Xi, b));
